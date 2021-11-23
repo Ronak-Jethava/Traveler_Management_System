@@ -5,4 +5,5 @@ from employee import views
 urlpatterns = [
     path('', views.home),
     path('add_traveller', views.add_traveller),
+    path('delete_user', views.delete_user),
 ]

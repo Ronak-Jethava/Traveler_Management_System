@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Travel History </title>
+</head>
+<body>
+    {% if deleted %}
+    User with id {{user_id}} Deleted successfully.<br><br>
+    {% endif %}
+    <form method="POST" action="delete_user">
+    {% csrf_token %}
+    <label for="id"> User ID: </label><br>
+    <input type="number" id="id" name="user_id"><br><br>
+    <input type="submit" value='Delete User', style="color:red">    
+    </form>
+    <br><br>
+    <div>       
+    </div>
+</body>
+</html>
