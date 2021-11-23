@@ -39,14 +39,9 @@
     <div> Mode of travel: {{row.2}} </div>
     <div> Duration of tour: {{row.3}} </div>
     <div> Registered seats: {{row.4}} </div>
-    <div id="payment_details" style="display:none">
-        <div> Payment amount: {{row.5}} </div>    
-        <div> Payment date: {{row.6}} at {{row.7}} </div>    
-        <div> Payment mode: {{row.8}}</div>    
-    </div>
-    <button id="show_btn" onclick="myFunction()"> See payment details </button>
-    <div><button id="hide_btn" onclick="myFunction()" style="display:none"> Hide payment details </button>
-    <br><br>
+    <div> Payment amount: {{row.5}} </div>    
+    <div> Payment date: {{row.6}} at {{row.7}} </div>    
+    <div> Payment mode: {{row.8}}</div>    
     {% endfor %}
     {% endif %}
     </div>
