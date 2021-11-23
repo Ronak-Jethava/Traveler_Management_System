@@ -20,7 +20,7 @@ import dummy,home,traveller
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls'), name = 'Home Page'),
-    path('traveller', include('traveller.urls'), name = 'Traveller home page'),
-    path('travel_agency', include('travel_agency.urls'), name = 'Travel agency page'),
-    path('employee', include('employee.urls'), name = 'Employee page'),
+    path('traveller/', include('traveller.urls'), name = 'Traveller home page'),
+    path('travel_agency/', include('travel_agency.urls'), name = 'Travel agency page'),
+    path('employee/', include('employee.urls'), name = 'Employee page'),
 ]

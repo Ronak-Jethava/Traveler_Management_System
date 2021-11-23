@@ -5,25 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Travel History </title>
-    <script>
-    function myFunction() {
-    var x = document.getElementById("payment_details");
-    var show = document.getElementById("show_btn");
-    var hide = document.getElementById("hide_btn");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        hide.style.display = "block";
-        show.style.display = "none";
-    } else {
-        x.style.display = "none";
-        hide.style.display = "none";
-        show.style.display = "block";
-    }
-}
-    </script>
 </head>
 <body>
-    <form method="POST" action="/traveller/travel_history">
+    <form method="POST" action="travel_history">
     {% csrf_token %}
     <label for="id"> Traveller_id: </label><br>
     <input type="number" id="id" name="user_id"><br><br>
@@ -38,13 +22,9 @@
     <div> Mode of travel: {{row.2}} </div>
     <div> Duration of tour: {{row.3}} </div>
     <div> Registered seats: {{row.4}} </div>
-    <div id="payment_details" style="display:none">
-        <div> Payment amount: {{row.5}} </div>    
-        <div> Payment date: {{row.6}} at {{row.7}} </div>    
-        <div> Payment mode: {{row.8}}</div>    
-    </div>
-    <button id="show_btn" onclick="myFunction()"> See payment details </button>
-    <div><button id="hide_btn" onclick="myFunction()" style="display:none"> Hide payment details </button>
+    <div> Payment amount: {{row.5}} </div>    
+    <div> Payment date: {{row.6}} at {{row.7}} </div>    
+    <div> Payment mode: {{row.8}}</div>    
     <br><br>
     {% endfor %}
     {% endif %}
