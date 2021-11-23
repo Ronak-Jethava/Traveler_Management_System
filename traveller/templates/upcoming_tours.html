@@ -4,34 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Travel History </title>
-    <script>
-    function myFunction() {
-    var x = document.getElementById("payment_details");
-    var show = document.getElementById("show_btn");
-    var hide = document.getElementById("hide_btn");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        hide.style.display = "block";
-        show.style.display = "none";
-    } else {
-        x.style.display = "none";
-        hide.style.display = "none";
-        show.style.display = "block";
-    }
-}
-    </script>
+    <title> Upcoming Tours </title>
 </head>
 <body>
     <form method="POST" action="/traveller/upcoming_tours">
     {% csrf_token %}
-    <label for="id"> Traveller_id: </label><br>
+    <label for="id"> Traveller ID: </label><br>
     <input type="number" id="id" name="user_id"><br><br>
     <input type="submit" value='See upcoming Tours'>    
     </form>
     <div>
     <br><br>
     {% if upcoming_tours %}
+    <h3> Traveller ID: {{ traveller_id}} </h3>
+    
+    <h3>Upcoming Tours:</h3>
     {% for row in upcoming_tours %}
     <div> Start Date: {{row.0}} </div>
     <div> Start Time: {{row.9}} </div>

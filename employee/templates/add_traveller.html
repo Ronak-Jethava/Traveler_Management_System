@@ -7,7 +7,7 @@
     <title> Add Traveller </title>
 </head>
 <body>
-    <form action="/traveller/add_traveller" method="post">
+    <form action="/employeer/add_traveller" method="post">
     {% csrf_token %}
     <label for="f_name"> First Name: </label>
     <input type="text" name="first_name" id="f_name" required> <br><br>
@@ -24,5 +24,6 @@
     <input type="radio" name="gender" id="female" value="1"> Female <br><br>
     <input type="submit" value="Add Traveller">
     </form>
+    
 </body>
 </html>

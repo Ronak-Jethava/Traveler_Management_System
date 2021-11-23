@@ -35,7 +35,7 @@ def travel_history(request):
         if conn is not None:
             conn.close()
         
-        return render(request, 'travel_history.html', {'travel_history':travel_history})
+        return render(request, 'travel_history.html', {'traveller_id':user_id, 'travel_history':travel_history})
     else:
         return render(request, 'travel_history.html')
 
@@ -66,7 +66,7 @@ def upcoming_tours(request):
         if conn is not None:
             conn.close()
         
-        return render(request, 'upcoming_tours.html', {'upcoming_tours':upcoming_tours})
+        return render(request, 'upcoming_tours.html', {'traveller_id':user_id, 'upcoming_tours':upcoming_tours})
     else:
         return render(request, 'upcoming_tours.html')
 

@@ -9,13 +9,15 @@
 <body>
     <form method="POST" action="travel_history">
     {% csrf_token %}
-    <label for="id"> Traveller_id: </label><br>
+    <label for="id"> Traveller ID: </label><br>
     <input type="number" id="id" name="user_id"><br><br>
     <input type="submit" value='Get travel History'>    
     </form>
-    <div>
     <br><br>
+    <div>       
     {% if travel_history %}
+    <h3> Traveller ID: {{ traveller_id}} </h3>
+    <h3> Travel History: </h3>
     {% for row in travel_history %}
     <div> Start Date: {{row.0}} </div>
     <div> Visited Places: {{row.1}} </div>
