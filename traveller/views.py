@@ -16,12 +16,13 @@ def travel_history(request):
         )
         c = conn.cursor()
         c.execute('''
-            select "Scheduled_on".start_date, (select string_agg("Places".place_name, ', ') from "Places" where "Tour Package".package_id = package_id group by package_id), "Tour Package".vehicle, t1.payment_amount
+            select "Scheduled_on".start_date, (select string_agg("Places".place_name, ', ') from "Places" where "Tour Package".package_id = package_id group by package_id), "Tour Package".vehicle, "Tour Package".duration, t1.no_of_seats, t1.payment_amount, t1.payment_date, t1.payment_time, t1.payment_mode
             from (
-                select "Booking".booking_id, (select "Payment".payment_amount from "Payment" where "Payment".booking_id = "Booking".booking_id and "Payment".payment_status='successful'), "Booking".package_detail_id
-                from "Booking" 
+                select "Booking".booking_id, "Payment".payment_amount, "Payment".payment_date, "Payment"."Payment_time", "Payment".payment_mode, "Booking".package_detail_id, "Booking".no_of_seats
+                from "Booking" join "Payment"
+				on "Payment".booking_id = "Booking".booking_id and "Payment".payment_status = 'successful'
                 where traveller_id = {0}
-                ) as t1(booking_id, payment_amount, schedule_id) 
+                ) as t1(booking_id, payment_amount, payment_date, payment_time, payment_mode, schedule_id, no_of_seats) 
                 join "Scheduled_on"
                 on t1.schedule_id = "Scheduled_on".schedule_id
                 join "Tour Package"
