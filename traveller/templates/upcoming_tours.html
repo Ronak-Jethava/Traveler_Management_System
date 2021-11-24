@@ -7,29 +7,34 @@
     <title> Upcoming Tours </title>
 </head>
 <body>
-    <form method="POST" action="/traveller/upcoming_tours">
-    {% csrf_token %}
-    <label for="id"> Traveller ID: </label><br>
-    <input type="number" id="id" name="user_id"><br><br>
-    <input type="submit" value='See upcoming Tours'>    
-    </form>
-    <div>
-    <br><br>
+    <div style="background-color: aquamarine; text-align: center;">
+        <form method="POST" action="/traveller/upcoming_tours">
+        {% csrf_token %}
+        <label for="id"> Traveller ID: </label><br>
+        <input type="number" id="id" name="user_id"><br><br>
+        <input type="submit" value='See upcoming Tours'>    
+        </form>
+        <br><br>
+    </div>
     {% if upcoming_tours %}
-    <h3> Traveller ID: {{ traveller_id}} </h3>
+    <div style="background-color:aqua; text-align: center;">
+        <h3> Traveller ID: {{ traveller_id}} </h3>
     
-    <h3>Upcoming Tours:</h3>
-    {% for row in upcoming_tours %}
-    <div> Start Date: {{row.0}} </div>
-    <div> Start Time: {{row.9}} </div>
-    <div> Places to visit: {{row.1}} </div>
-    <div> Mode of travel: {{row.2}} </div>
-    <div> Duration of tour: {{row.3}} </div>
-    <div> Registered seats: {{row.4}} </div>
-    <div> Payment amount: {{row.5}} </div>    
-    <div> Payment date: {{row.6}} at {{row.7}} </div>    
-    <div> Payment mode: {{row.8}}</div>    
-    {% endfor %}
+        <h3>Upcoming Tours:</h3>
+        {% for row in upcoming_tours %}
+            <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 60%; margin: 0 auto;">
+                <div> Start Date: {{row.0}} </div>
+                <div> Start Time: {{row.9}} </div>
+                <div> Places to visit: {{row.1}} </div>
+                <div> Mode of travel: {{row.2}} </div>
+                <div> Duration of tour: {{row.3}} </div>
+                <div> Registered seats: {{row.4}} </div>
+                <div> Payment amount: {{row.5}} </div>    
+                <div> Payment date: {{row.6}} at {{row.7}} </div>    
+                <div> Payment mode: {{row.8}}</div> 
+            </div>   
+        {% endfor %}
+    </div>
     {% endif %}
     </div>
 </body>

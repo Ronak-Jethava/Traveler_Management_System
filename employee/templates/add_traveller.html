@@ -1,12 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'add_traveller.css' %}"/>
     <title> Add Traveller </title>
 </head>
-<body>
+<body style="background-color: bisque;">
     {% if user %}
     New Traveller added successfully, the details are as follows.<br>
     Traveller ID: {{ user.0 }} <br>
@@ -22,29 +26,74 @@
     Gender: {{ user.6}}<br><br>
     {% endif %}
     
-    <form action="/employee/add_traveller" method="post">
-    {% csrf_token %}
-    <label for="u_name"> User Name: </label>
-    <input type="text" name="user_name" id="u_name" required><br><br>
-    <label for="f_name"> First Name: </label>
-    <input type="text" name="first_name" id="f_name" required> <br><br>
-    <label for="m_name"> Middle Name: </label>
-    <input type="text" name="middle_name" id="m_name"><br><br>
-    <label for="l_name"> Last Name: </label>
-    <input type="text" name="last_name" id="l_name" required><br><br>
-    <label for="email"> Email ID: </label>
-    <input type="email" name="email" id="email" required> <br><br>
-    <label for="contact"> Contact Number: </label>
-    <input type="phone2numeric" name="contact" id="contact"> <br><br>
-    <label for="bd"> Birth Date: </label>
-    <input type="date" name="birthdate" id="bd"  required> <br><br>
-    <label for="gender" required> Gender: </label><br>
-    <input type="radio" name="gender" id="male" value="0"> Male <br>
-    <input type="radio" name="gender" id="female" value="1"> Female <br><br>
-    <label for="pswd"> Password: </label>
-    <input type="password" name="password" id="pswd"><br><br>
-    <input type="submit" value="Add Traveller">
-    </form>
-    <br><br>
+    <div style="width: 35%; margin: 10px auto; background-color:gainsboro; border: 1px solid black; padding: 10px; border-radius: 5px;">
+        <h2 style="text-align: center; padding: 15px;"> Traveller Registration</h2>
+    <form class="row g-3" action="/employee/add_traveller" method="post">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label for="inputUser" class="form-label">Username</label>
+            <input type="text" class="form-control" id="inputUser">
+          </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="row g-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Middle name" aria-label="Middle name">
+              </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+          </div>
+            <legend class="col-form-label col-sm-2 pt-0" style="padding-left: 25px;">Gender</legend>
+            <div class="col-sm-10" style="padding-left: 15px;">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  Female
+                </label>
+              </div>
+            </div>
+          <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="date" class="col-form-label" style="padding-left: 10px;">Birth Date</label>
+            </div>
+            <div class="col-auto">
+            <input type="date" class="form-control" id="date" name="birthdate" required>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputEmail4" class="col-form-label" style="padding-left: 20px;">Email</label>
+            </div>
+            <div class="col-auto" style="padding-left:30px;">
+            <input type="email" class="form-control" id="inputEmail4">
+            </div>
+        </div>
+          <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="phone" class="form-label" >Contact No</label>
+              </div>
+              <div class="col-auto">
+                <input type="tel" id="phone" class="form-control" name="phone" placeholder="1234567890" pattern="[0-9]{10}" required>
+              </div>
+            
+          </div>
+        <div class="col-12" style="text-align: center;">
+            <br>
+          <button type="submit" class="btn btn-primary">Add Traveller</button>
+        </div>
+      </form>
+    </div>   
 </body>
 </html>
