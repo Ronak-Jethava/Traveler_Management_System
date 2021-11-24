@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'travel_agency.apps.TravelAgencyConfig',
     'traveller.apps.TravellerConfig',
     'home.apps.HomeConfig',
-    'dummy.apps.DummyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Explore Tours </title>
+</head>
+<body>
+    <form action="" method="post">
+    {% csrf_token %}
+    <label for="vehicle"> Preferred Mode of travel(s):</label><br>
+    <input type="checkbox" id="vehicle" name="vehicle" value="Bike">
+    <label for="vehicle1"> Bus </label><br>
+    <input type="checkbox" id="vehicle" name="vehicle" value="Train">
+    <label for="vehicle3"> Train </label><br>
+    <input type="checkbox" id="vehicle" name="vehicle" value="Car">
+    <label for="vehicle2"> Car </label><br>
+    <input type="checkbox" id="vehicle" name="vehicle" value="Aeroplane">
+    <label for="vehicle3"> Aeroplane </label><br>
+    <input type="checkbox" id="vehicle" name="vehicle" value="Cruisse">
+    <label for="vehicle3"> Cruisse </label><br><br>
+
+    <label for="d"> Start Date between: </label>
+    <input type="date" name="s_date" id="d">
+    and
+    <input type="date" name="e_date" id="d"><br><br>
+    
+    <label for="amnt_range"> Maximum Package Amount: </label>
+    <input type="number" name="e_amnt" id="amnt_range"><br><br>
+    
+    <label for="places"> One of the place from (give input seperated by comma):</label><br>
+    <textarea name="places" id="places" cols="40" rows="6"></textarea><br><br>
+
+    <label for="acts"> One of the Activity from (give input seperated by comma):</label><br>
+    <textarea name="activities" id="acts" cols="40" rows="6"></textarea><br><br>
+
+    <input type="submit" value="Filter tours">
+
+    </form><br><br>
+    
+    {% if tours %}
+    {% for t in tours %}
+    Package Name: {{t.1}}<br>
+    Places: {{t.15}}<br>
+    Activities: {{t.16}} <br>
+    Start Date: {{t.11}} at {{t.12}} <br>
+    Duration: {{t.4}} days<br>
+    Mode of Travel: {{t.3}}<br>
+    Rating: {{t.6}} out of 5 <br>
+    Package Amount(per sheet): {{t.5}} ruppes <br>
+    Available Seats: {{t.13}} <br> 
+    Is Guide Available: {% if t.7 %} YES {% else %} NO {% endif %} <br>
+    Contact: {{t.17}} <br><br>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

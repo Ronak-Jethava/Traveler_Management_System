@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.home),
     path('travel_history', views.travel_history),
     path('upcoming_tours', views.upcoming_tours),
+    path('explore_tours', views.explore_tour_packages),
 ]
