@@ -10,55 +10,41 @@
     <link rel="stylesheet" href="{% static 'add_traveller.css' %}"/>
     <title> Add Traveller </title>
 </head>
-<body style="background-color: bisque;">
-    {% if user %}
-    New Traveller added successfully, the details are as follows.<br>
-    Traveller ID: {{ user.0 }} <br>
-    Username: {{ username }} <br>
-        {% if user.2 %}
-        Name: {{ user.1 }} {{user.2}} {{user.3}}
-        {% else %}
-        Name: {{ user.1 }} {{user.3}}
-        {% endif %}<br>
-    Email ID: {{user.4}}<br>
-    Contact: {{ contact }}<br>
-    Birthdate: {{user.5}}<br>
-    Gender: {{ user.6}}<br><br>
-    {% endif %}
+<body style="background-color:lightpink; color:aliceblue ">
     
-    <div style="width: 35%; margin: 10px auto; background-color:gainsboro; border: 1px solid black; padding: 10px; border-radius: 5px;">
+    <div style="width: 35%; margin: 10px auto; background-color:#d2601a; border:3px groove black; padding: 10px; border-radius: 5px;">
         <h2 style="text-align: center; padding: 15px;"> Traveller Registration</h2>
     <form class="row g-3" action="/employee/add_traveller" method="post">
         {% csrf_token %}
         <div class="col-md-6">
             <label for="inputUser" class="form-label">Username</label>
-            <input type="text" class="form-control" id="inputUser">
+            <input type="text" class="form-control" name="user_name" id="inputUser">
           </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4">
+          <input type="password" class="form-control" name="password" id="inputPassword4">
         </div>
         <div class="row g-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+              <input type="text" class="form-control" name="first_name" placeholder="First name" aria-label="First name">
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Middle name" aria-label="Middle name">
+                <input type="text" class="form-control" name="middle_name" placeholder="Middle name" aria-label="Middle name">
               </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+              <input type="text" class="form-control" name="last_name" placeholder="Last name" aria-label="Last name">
             </div>
           </div>
             <legend class="col-form-label col-sm-2 pt-0" style="padding-left: 25px;">Gender</legend>
             <div class="col-sm-10" style="padding-left: 15px;">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <input class="form-check-input" name="gender" type="radio" id="gridRadios1" value="option1" checked>
                 <label class="form-check-label" for="gridRadios1">
                   Male
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="option2">
                 <label class="form-check-label" for="gridRadios2">
                   Female
                 </label>
@@ -69,7 +55,7 @@
                 <label for="date" class="col-form-label" style="padding-left: 10px;">Birth Date</label>
             </div>
             <div class="col-auto">
-            <input type="date" class="form-control" id="date" name="birthdate" required>
+            <input type="date" class="form-control" name="birthdate" id="date" name="birthdate" required>
             </div>
         </div>
         <div class="row g-3 align-items-center">
@@ -77,7 +63,7 @@
                 <label for="inputEmail4" class="col-form-label" style="padding-left: 20px;">Email</label>
             </div>
             <div class="col-auto" style="padding-left:30px;">
-            <input type="email" class="form-control" id="inputEmail4">
+            <input type="email" class="form-control" name="email" id="inputEmail4">
             </div>
         </div>
           <div class="row g-3 align-items-center">
@@ -85,7 +71,7 @@
                 <label for="phone" class="form-label" >Contact No</label>
               </div>
               <div class="col-auto">
-                <input type="tel" id="phone" class="form-control" name="phone" placeholder="1234567890" pattern="[0-9]{10}" required>
+                <input type="phone2numeric" id="phone" class="form-control" name="contact" placeholder="1234567890" pattern="[0-9]{10}" required>
               </div>
             
           </div>
@@ -95,5 +81,22 @@
         </div>
       </form>
     </div>   
+
+    {% if user %}
+        <div style="width:35%; padding:10px ; color:ghostwhite; margin:0 auto; border: 2px solid greenyellow; background-color:#d2601a;">
+          New Traveller added successfully, the details are as follows.<br>
+          Traveller ID: {{ user.0 }} <br>
+          Username: {{ username }} <br>
+              {% if user.2 %}
+              Name: {{ user.1 }} {{user.2}} {{user.3}}
+              {% else %}
+              Name: {{ user.1 }} {{user.3}}
+              {% endif %}<br>
+          Email ID: {{user.4}}<br>
+          Contact: {{ contact }}<br>
+          Birthdate: {{user.5}}<br>
+          Gender: {{ user.6}}<br><br>
+      </div>
+    {% endif %}
 </body>
 </html>
