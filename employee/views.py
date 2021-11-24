@@ -16,7 +16,7 @@ def add_traveller(request):
         contact = int(request.POST.get('contact'))
         birthdate = request.POST.get('birthdate')
         gender = request.POST.get('gender')
-        gender = "MALE" if int(gender) == 0 else "FEMALE"
+        gender = "Male" if gender=='option1' else "Female"
         password = request.POST.get('password')
         
         conn = psycopg2.connect(
