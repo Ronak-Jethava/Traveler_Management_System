@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Travel Agency </title>
+</head>
+<body>
+    <p> Hello, This is the web-page to get the details of travel agency and it's all packages. </p><br>
+    <form method="POST" action="display_packages">
+    {% csrf_token %}
+    <label for="id"> Travel Agency ID: </label><br>
+    <input type="number" id="id" name="agency_id"><br><br>
+    <input type="submit" value='See all packages'>    
+    </form>
+
+    {% if no_agency %}
+    <p> There is no agency with given agency_id </p>
+    {% endif %}
+    {% if travel_agency %}
+    <h3>Travel Agency Details</h3>
+    Travel Agengy ID: {{travel_agency.0}}<br>
+    Name: {{travel_agency.1}}<br>
+    Address: {{travel_agency.2}}, {{travel_agency.3}}, {{travel_agency.4}}-{{travel_agency.5}}<br>
+    Email ID: {{travel_agency.6}}<br>
+    Customer Care Number: {{travel_agency.9}}<br>
+    Total Tour Packages: {{travel_agency.8}}<br>
+    {% endif %}<br><br>
+    
+    {% if tour_packages %}
+    <h3>Package Details</h3>
+    {% for tp in tour_packages %}
+    Package ID:{{tp.0}}<br>
+    Package Name:{{tp.1}}<br>
+    Places:{{tp.9}}<br>
+    Mode of Travel:{{tp.3}}<br>
+    Duration:{{tp.4}}<br>
+    Activities:{{tp.10}}<br>
+    Package Amount:{{tp.5}}<br>
+    Rating:{{tp.6}}<br><br>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
