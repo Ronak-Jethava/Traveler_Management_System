@@ -107,14 +107,14 @@ def explore_tour_packages(request):
             tours = list(filter(lambda x:x[5] <= int(e_amnt), tours))
 
         places = request.POST.get('places')
-        places = [item for item in list(places.split(',')) if item]
+        places = [item.lower() for item in list(places.split(',')) if item]
         if places:
-            tours = list(filter(lambda x:(x[15] is not None and any(place in places for place in x[15].split(', '))), tours))
+            tours = list(filter(lambda x:(x[15] is not None and any(place in places for place in [s.lower() for s in x[15].split(', ')])), tours))
 
         activities = request.POST.get('activities')
-        activities = [item for item in list(activities.split(',')) if item]
+        activities = [item.lower() for item in list(activities.split(',')) if item]
         if activities:
-            tours = list(filter(lambda x:(x[16] is not None and any(activity in activities for activity in x[16].split(', '))), tours))
+            tours = list(filter(lambda x:(x[16] is not None and any(activity in activities for activity in [s.lower() for s in x[16].split(', ')])), tours))
 
     c.close()
     if conn is not None:

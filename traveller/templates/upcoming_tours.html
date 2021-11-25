@@ -6,18 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Upcoming Tours </title>
 </head>
-<body>
-    <div style="background-color: aquamarine; text-align: center;">
+<body  style="background-color: #ADD8E6; text-align: center;">
+        <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 35%; margin: 0 auto; padding:10px">
         <form method="POST" action="/traveller/upcoming_tours">
         {% csrf_token %}
         <label for="id"> Traveller ID: </label><br>
         <input type="number" id="id" name="user_id"><br><br>
-        <input type="submit" value='See upcoming Tours'>    
-        </form>
+        <input type="submit" value='See upcoming Tours' style = "font-size:16px; border-radius:5px; border-color:darkgray; width:5cm; margin-bottom:15px">    
+        </form></div>
         <br><br>
-    </div>
     {% if upcoming_tours %}
-    <div style="background-color:aqua; text-align: center;">
         <h3> Traveller ID: {{ traveller_id}} </h3>
     
         <h3>Upcoming Tours:</h3>
@@ -36,6 +34,5 @@
         {% endfor %}
     </div>
     {% endif %}
-    </div>
 </body>
 </html>

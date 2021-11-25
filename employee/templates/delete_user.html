@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Travel History </title>
 </head>
-<body>
+<body style="background-color:#ADD8E6; text-align: center;">
     {% if deleted %}
-    User with id {{user_id}} Deleted successfully.<br><br>
+    <div style="background-color: bisque; opacity:0.9; border: 1px solid black; border-radius: 5px; width: 45%; margin: 0 auto;">
+    <p style="color:red;"> User with id {{user_id}} Deleted successfully.<br><br></p>
+    </div>
     {% endif %}
+    <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 45%; margin: 10px auto; padding-bottom:10px">
     <form method="POST" action="delete_user">
     {% csrf_token %}
     <label for="id"> User ID: </label><br>
     <input type="number" id="id" name="user_id"><br><br>
-    <input type="submit" value='Delete User', style="color:red">    
+    <input type="submit" value='Delete User', style="color:red; font-size:16px; border-radius:5px; border-color:darkgray; width:4cm; margin-bottom:15px">    
     </form>
+    </div>
     <br><br>
     <div>       
     </div>

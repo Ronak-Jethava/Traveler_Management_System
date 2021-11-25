@@ -6,19 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Travel Agency </title>
 </head>
-<body>
-    <p> Hello, This is the web-page to get the details of travel agency and it's all packages. </p><br>
+<body style="background-color: #ADD8E6; text-align: center;">
+    <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 50%; margin: 0 auto; padding:10px">
+    <h1> Tour Package details </h1><br>
     <form method="POST" action="display_packages">
     {% csrf_token %}
     <label for="id"> Travel Agency ID: </label><br>
     <input type="number" id="id" name="agency_id"><br><br>
-    <input type="submit" value='See all packages'>    
+    <input type="submit" value='Display Packages' style = "font-size:16px; border-radius:5px; border-color:darkgray; width:5cm; margin-bottom:15px">    
     </form>
-
+    </div><br>
+    
     {% if no_agency %}
-    <p> There is no agency with given agency_id </p>
+    <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 50%; margin: 0 auto; padding:10px">
+    <h3> There is no agency with given agency_id </h2>
+    </div><br>
     {% endif %}
+    
     {% if travel_agency %}
+    <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 50%; margin: 0 auto; padding-bottom:10px">
     <h3>Travel Agency Details</h3>
     Travel Agengy ID: {{travel_agency.0}}<br>
     Name: {{travel_agency.1}}<br>
@@ -26,11 +32,13 @@
     Email ID: {{travel_agency.6}}<br>
     Customer Care Number: {{travel_agency.9}}<br>
     Total Tour Packages: {{travel_agency.8}}<br>
-    {% endif %}<br><br>
-    
+    </div><br><br>
+    {% endif %}
+
     {% if tour_packages %}
     <h3>Package Details</h3>
     {% for tp in tour_packages %}
+    <div style="background-color: bisque; border: 1px solid black; border-radius: 5px; width: 50%; margin: 0 auto; padding:10px">
     Package ID:{{tp.0}}<br>
     Package Name:{{tp.1}}<br>
     Places:{{tp.9}}<br>
@@ -38,7 +46,8 @@
     Duration:{{tp.4}}<br>
     Activities:{{tp.10}}<br>
     Package Amount:{{tp.5}}<br>
-    Rating:{{tp.6}}<br><br>
+    Rating:{{tp.6}}
+    </div><br>
     {% endfor %}
     {% endif %}
 </body>
