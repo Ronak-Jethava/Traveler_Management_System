@@ -130,6 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/' 
 
 STATICFILES_DIRS = [
+    "home/static",
     "/traveller/static",
     "/travel_agency/static",
     "/employee/static",

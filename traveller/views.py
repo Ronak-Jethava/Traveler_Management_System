@@ -34,9 +34,9 @@ def travel_history(request):
         if conn is not None:
             conn.close()
         
-        return render(request, 'travel_history.html', {'traveller_id':user_id, 'travel_history':travel_history})
+        return render(request, 'travel_history.html', {'traveller_id':user_id, 'is_post': True, 'travel_history':travel_history})
     else:
-        return render(request, 'travel_history.html')
+        return render(request, 'travel_history.html', {'is_post':False})
 
 
 def upcoming_tours(request):
@@ -65,10 +65,12 @@ def upcoming_tours(request):
         if conn is not None:
             conn.close()
         
-        return render(request, 'upcoming_tours.html', {'traveller_id':user_id, 'upcoming_tours':upcoming_tours})
+        return render(request, 'upcoming_tours.html', {'traveller_id':user_id, 'is_post': True, 'upcoming_tours':upcoming_tours})
     else:
-        return render(request, 'upcoming_tours.html')
+        return render(request, 'upcoming_tours.html', {'is_post': False })
 
+def lower_list(lst):
+    return [s.lower() for s in lst.split(', ')]
 
 def explore_tour_packages(request):
     conn = psycopg2.connect(
@@ -109,12 +111,14 @@ def explore_tour_packages(request):
         places = request.POST.get('places')
         places = [item.lower() for item in list(places.split(',')) if item]
         if places:
-            tours = list(filter(lambda x:(x[15] is not None and any(place in places for place in [s.lower() for s in x[15].split(', ')])), tours))
+            tours = list(filter(lambda x:(x[15] is not None and any(place in places for place in lower_list(x[15]))), tours))
 
         activities = request.POST.get('activities')
         activities = [item.lower() for item in list(activities.split(',')) if item]
         if activities:
-            tours = list(filter(lambda x:(x[16] is not None and any(activity in activities for activity in [s.lower() for s in x[16].split(', ')])), tours))
+            tours = list(filter(lambda x:(x[16] is not None and any(activity in activities for activity in lower_list(x[16]))), tours))
+
+    tours = list(filter(lambda x:x[13]>0,tours))    
 
     c.close()
     if conn is not None:
